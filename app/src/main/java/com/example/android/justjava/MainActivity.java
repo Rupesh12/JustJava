@@ -1,65 +1,77 @@
 package com.example.android.justjava;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
+import com.example.android.justjava.R;
 
-/**
- * This app displays an order form to order coffee.
- */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0 ;
+
+    int scoreA = 0 ;
+    int scoreB = 0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    /**
-     * This method is called when the order button is clicked.
-     */
-    public void submitOrder(View view) {
-        int price = quantity*5 ;
-        String priceMessage = "Total: $ "+ price+"\nThank you !";
-        displayMessage(priceMessage);
-    }
-
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
-    }
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        // PASTE CODE YOU WANT TO TEST HERE
 
     }
 
-    public void increment(View view) {
-
-        display(++quantity);
-    }
-    public void decrement(View view) {
-        if(quantity>=1)
-         display(--quantity);
-    }
 
 
     /**
-     * This method displays the given text on the screen.
+     * Display methods that allow the text to appear on the screen. Don't worry if you don't know
+     * how these work yet. We'll be covering them in lesson 3.
      */
-    private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+
+    public void displayForTeamB(int score){
+        TextView scoreView = (TextView) findViewById(R.id.team_b_score) ;
+        scoreView.setText(String.valueOf(score));
+    }
+
+    public void clickOn3b(View v){
+        scoreB = scoreB + 3 ;
+        displayForTeamB(scoreB);
+    }
+
+
+    public void clickOn2b(View v){
+        scoreB = scoreB + 2 ;
+        displayForTeamB(scoreB);
+    }
+
+    public void clickOnFreeThrowb(View v){
+        scoreB = scoreB + 1 ;
+        displayForTeamB(scoreB );
+    }
+
+    public void displayForTeamA(int score){
+        TextView scoreView = (TextView) findViewById(R.id.team_a_score) ;
+        scoreView.setText(String.valueOf(score));
+    }
+
+    public void clickOn3(View v){
+        scoreA = scoreA + 3 ;
+        displayForTeamA(scoreA);
+    }
+
+
+    public void clickOn2(View v){
+        scoreA = scoreA + 2 ;
+        displayForTeamA(scoreA);
+    }
+
+    public void clickOnFreeThrow(View v){
+        scoreA = scoreA + 1 ;
+        displayForTeamA(scoreA );
+    }
+
+    public void resetAll(View view) {
+        scoreA = 0 ;
+        scoreB = 0 ;
+        displayForTeamA(scoreA);
+        displayForTeamB(scoreB);
     }
 }
