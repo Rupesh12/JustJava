@@ -2,6 +2,8 @@ package com.example.android.justjava;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -40,7 +42,28 @@ public class MainActivity extends AppCompatActivity {
 
         int price = price(cream,choc) ;
         Log.v("MainActivity.java","name "+name);
-        displayMessage(createOrderSummary(price,cream,choc,name));
+       // displayMessage(createOrderSummary(price,cream,choc,name));
+       // Log.v("MainActivity.java","name "+"Return from display");
+        String[] add = new String[]{"starbucks@buffalo.edu"} ;
+        Log.v("MainActivity.java","Address  Array Created");
+        String subject = getString(R.string.subject,name) ;
+        Log.v("MainActivity.java","Calling composeEmail");
+        composeEmail(add,subject,createOrderSummary(price,cream,choc,name));
+
+
+//        Intent intent = new Intent(Intent.ACTION_SENDTO);
+//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//        //intent.setType("*/*");
+//        intent.putExtra(Intent.EXTRA_EMAIL, add);
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+//        intent.putExtra(Intent.EXTRA_TEXT,createOrderSummary(price,cream,choc,name));
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
+
+
+
+
     }
     /**
      * Method to calculate the price
@@ -61,7 +84,22 @@ public class MainActivity extends AppCompatActivity {
      * @return orderSummary
      * **/
     private String createOrderSummary(int price,boolean cream,boolean choclate, String name){
-        return ("Name : "+name+"\nAdd Whipped Cream : " + cream+"\nAdd Choclate : "+choclate+"\nQuantity : "+quantity+"\nTotal : $ "+price+"\nThank You");
+       // return ("Name : "+name+"\nAdd Whipped Cream : " + cream+"\nAdd Choclate : "+choclate+"\nQuantity : "+quantity+"\nTotal : $ "+price+"\nThank You");
+        String choclatep = "" ;
+        String creamp = "" ;
+        if(cream){
+         creamp = "true" ;
+    }else{
+        creamp = "false";
+    }
+        if(choclate){
+        choclatep = "true" ;
+        }
+        else{
+        choclatep = "false" ;
+        }
+
+        return getString(R.string.order_summary_name,name,creamp,choclatep,quantity,price);
     }
 
     /**
@@ -103,12 +141,23 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
-    private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        priceTextView.setText(message);
+//    private void displayMessage(String message) {
+//        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
+//        priceTextView.setText(message);
+//    }
+
+
+    public void composeEmail(String[] addresses, String subject, String summary) {
+        Log.v("Main Activity","Inside the composeEmail") ;
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT,summary);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
-
-
 
 
 

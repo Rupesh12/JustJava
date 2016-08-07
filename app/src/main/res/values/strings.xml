@@ -1,3 +1,13 @@
-<resources>
-    <string name="app_name">Just Java</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+<string name="app_name" translatable="false">Just Java</string>
+    <string name="name" translatable="false">Name</string>
+    <string name="toppings" translatable="false">Toppings</string>
+    <string name="whipped_cream" translatable="false">Whipped Cream</string>
+    <string name="choclate" translatable="false">Choclate</string>
+    <string name="quantity" translatable="false">QUANTITY</string>
+    <string name="order" translatable="false">Order</string>
+    <string name="order_summary_name" translatable="false">Name : <xliff:g id="name" example="Amy" >%s</xliff:g> \nAdd Whipped Cream : <xliff:g id="cream" example="true" >%s</xliff:g>\nAdd Choclate : <xliff:g id="choc" example="true" >%s</xliff:g>\nQuantity : <xliff:g id="quantity" example="1" >%d</xliff:g>Total $: <xliff:g id="price" example="3" >%d</xliff:g>\nThankYou : </string>
+    <string name="subject"  translatable="false">"Just Java Order for : <xliff:g id="name" example="Amy" >%s</xliff:g></string>
 </resources>

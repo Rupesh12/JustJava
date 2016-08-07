@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+
+    <string name="app_name">Sólo Java</string>
+    <string name="name" translatable="false">Nombre</string>
+    <string name="toppings" translatable="false">Ingredientes</string>
+    <string name="whipped_cream" translatable="false">Crema batida</string>
+    <string name="choclate" translatable="false">Chocolate</string>
+    <string name="quantity" translatable="false">Cantidad</string>
+    <string name="order" translatable="false">Ordenar</string>
+    <string name="order_summary_name">Nombre: <xliff:g id="name" example="Amy" >%s</xliff:g> \nAgregue la crema batida? : <xliff:g id="cream" example="true" >%s</xliff:g>\nAgregue el chocolate? : <xliff:g id="choc" example="true" >%s</xliff:g>\nCantidad: <xliff:g id="quantity" example="1" >%d</xliff:g>Total $: <xliff:g id="price" example="3" >%d</xliff:g>\n¡Gracias!</string>
+    <string name="subject"  translatable="false">Nur Java Ordo por : <xliff:g id="name" example="Amy" >%s</xliff:g></string>
+</resources>
